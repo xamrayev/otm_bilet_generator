@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Savol Generator Online</title>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bulma.min.css' ) }}>
+</head>
+<body>
+    <div class="section">
+            <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <span class="icon">
+                  <i class="fas fa-file-word"></i> </span>
+                <span>Генератор вариантов</span>
+            </a>
+        </div>
+
+        <div class="navbar-end" style="margin-right: 20px;">
+            
+            <a href="/" class="navbar-item">
+                UZ
+            </a>
+        </div>
+    </nav>
+    <!-- Savol generatori -->
+    <section class="hero is-link">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Генератор вопросов</h1>
+                <h2 class="subtitle">Разделите вопросы на варианты</h2>
+                <a type="button" href={{ url_for('static', filename='examples/savol_example.xlsx' ) }} class="button">Образец файла</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="margin-top: -10vh;">
+        <div class="container">
+            
+            <form action="/generate_docx_ru" class="box" method="POST" enctype="multipart/form-data">
+                <div class="columns is-multiline">
+                    <div class="column is-half">
+                        <div class="field">
+                            <label for="kafedra_nomi" class="label">Название кафедры</label>
+                            <div class="control">
+                                <input type="text" class="input" id="kafedra_nomi" name="kafedra_nomi" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="fanimiz" class="label">Предметь</label>
+                            <div class="control">
+                                <input type="text" class="input" id="fanimiz" name="fanimiz" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="semestr" class="label">Семестр</label>
+                            <div class="control">
+                                <input type="number" class="input" id="semestr" name="semestr" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="tuzuvchi" class="label">Составитель</label>
+                            <div class="control">
+                                <input type="text" class="input" id="tuzuvchi" name="tuzuvchi" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+
+                        <div class="field">
+                            <label for="kafedra_mudiri" class="label">Заведующий кафедры</label>
+                            <div class="control">
+                                <input type="text" class="input" id="kafedra_mudiri" name="kafedra_mudiri" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="bilet_soni" class="label">Количество билетов</label>
+                            <div class="control">
+                                <input type="number" class="input" id="bilet_soni" name="bilet_soni" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="savollar_soni" class="label">Количество вопросов</label>
+                            <div class="control">
+                                <input type="number" class="input" id="savollar_soni" name="savollar_soni" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="savol_file" class="label">Файл вопросов:</label>
+                            <div class="control">
+                                <input type="file" class="input" id="savol_file" name="savol_file">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Генерировать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Test generatori -->
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">Генератор тестов</h1>
+                <h2 class="subtitle">Разделите тесты на варианты</h2>
+                <a type="button" href={{ url_for('static', filename='examples/test_example.xlsx' ) }} class="button">Образец файла</a>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="margin-top: -10vh;">
+        <div class="container">
+            
+            <form action="/generate_and_download_ru" class="box" method="POST" enctype="multipart/form-data">
+                <div class="columns is-multiline">
+                    <div class="column is-half">
+                        <div class="field">
+                            <label for="kafedra_nomi" class="label">Название кафедры</label>
+                            <div class="control">
+                                <input type="text" class="input" id="kafedra_nomi" name="kafedra_nomi" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="guruh" class="label">Группа</label>
+                            <div class="control">
+                                <input type="text" class="input" id="guruh" name="guruh" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="fan" class="label">Предметь</label>
+                            <div class="control">
+                                <input type="text" class="input" id="fan" name="fan" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="semestr" class="label">Семестр</label>
+                            <div class="control">
+                                <input type="number" class="input" id="semestr" name="semestr" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="tuzuvchi" class="label">Составитель</label>
+                            <div class="control">
+                                <input type="text" class="input" id="tuzuvchi" name="tuzuvchi" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-half">
+
+                        <div class="field">
+                            <label for="zav_kaf" class="label">Заведующий кафедры</label>
+                            <div class="control">
+                                <input type="text" class="input" id="zav_kaf" name="zav_kaf" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="kerakli_variantlar_soni" class="label">Количество вариантов</label>
+                            <div class="control">
+                                <input type="number" class="input" id="kerakli_variantlar_soni" name="kerakli_variantlar_soni" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="variantda_test_soni" class="label">Количество тестов</label>
+                            <div class="control">
+                                <input type="number" class="input" id="variantda_test_soni" name="variantda_test_soni" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="savol_file" class="label">Файл вопросов:</label>
+                            <div class="control">
+                                <input type="file" class="input" id="savol_file" name="savol_file">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Генерировать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+</div>
+<script async type="text/javascript" src={{ url_for('static', filename='js/bulma.js' ) }}></script>
+</body>
+</html>
