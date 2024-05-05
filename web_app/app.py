@@ -25,7 +25,7 @@ def generate_docx_files(
         variantda_test_soni = int,
         fayl = str,
         ):
-   
+    
     natija = tayyorlash(test_fayl=fayl, kerakli_variantlar_soni=kerakli_variantlar_soni,variantda_test_soni=variantda_test_soni)
     variantlar = natija[0]
     zip_buffer = BytesIO()
@@ -94,11 +94,11 @@ def generate_docx_files(
                 table2.alignment = WD_TABLE_ALIGNMENT.CENTER
                 
                 savol_cell1 = table2.rows[0].cells
-                savol_cell1[0].text = f"\ta){testlar[savol]['javob'][0]}"
-                savol_cell1[1].text = f"\tb){testlar[savol]['javob'][1]}"
+                savol_cell1[0].text = f"a){testlar[savol]['javob'][0]}"
+                savol_cell1[1].text = f"b){testlar[savol]['javob'][1]}"
                 savol_cell2 = table2.rows[1].cells
-                savol_cell2[0].text = f"\tc){testlar[savol]['javob'][2]}"
-                savol_cell2[1].text = f"\td){testlar[savol]['javob'][3]}"
+                savol_cell2[0].text = f"c){testlar[savol]['javob'][2]}"
+                savol_cell2[1].text = f"d){testlar[savol]['javob'][3]}"
 
 
             document.add_page_break()
@@ -170,6 +170,7 @@ def generate_docx_files(
             zip_file.writestr(filename2, docx_buffer.read())
     zip_buffer.seek(0)
     return zip_buffer.read()
+    
 
 def generate_docx_files_ru(
         kafedra_nomi=str,
@@ -254,11 +255,11 @@ def generate_docx_files_ru(
                 table2.alignment = WD_TABLE_ALIGNMENT.CENTER
                 
                 savol_cell1 = table2.rows[0].cells
-                savol_cell1[0].text = f"\ta){testlar[savol]['javob'][0]}"
-                savol_cell1[1].text = f"\tb){testlar[savol]['javob'][1]}"
+                savol_cell1[0].text = f"a){testlar[savol]['javob'][0]}"
+                savol_cell1[1].text = f"b){testlar[savol]['javob'][1]}"
                 savol_cell2 = table2.rows[1].cells
-                savol_cell2[0].text = f"\tc){testlar[savol]['javob'][2]}"
-                savol_cell2[1].text = f"\td){testlar[savol]['javob'][3]}"
+                savol_cell2[0].text = f"c){testlar[savol]['javob'][2]}"
+                savol_cell2[1].text = f"d){testlar[savol]['javob'][3]}"
 
 
             document.add_page_break()
@@ -352,6 +353,7 @@ def generate_docx_ru():
         fan = request.form['fanimiz']
         semestr = request.form['semestr']
         tuzuvchi = request.form['tuzuvchi']
+        guruh = request.form['guruh']
         kafedra_mudiri = request.form['kafedra_mudiri']
         bilet_soni = int(request.form['bilet_soni'])
         savollar_soni = int(request.form['savollar_soni'])
@@ -373,7 +375,7 @@ def generate_docx_ru():
             
             v1 = p_v1.add_run('\nНаманганский инженерно-строительный институт\n')
             v2 = p_v1.add_run(f'Кафедра «{kafedra_nomi}» Билеты для проведения промежуточной работы\n')
-            v3 = p_v1.add_run(f'по дисциплине «{fan}» ({semestr}-семестр)\n')
+            v3 = p_v1.add_run(f'по дисциплине «{fan}» Группа {guruh}  ({semestr}-семестр)\n')
             v4 = p_v1.add_run(f'ВАРИАНТ № {i+1}')
         
             for i in range(savollar_soni):
@@ -449,6 +451,7 @@ def generate_docx():
         kafedra_nomi = request.form['kafedra_nomi']
         fan = request.form['fanimiz']
         semestr = request.form['semestr']
+        guruh = request.form['guruh']
         tuzuvchi = request.form['tuzuvchi']
         kafedra_mudiri = request.form['kafedra_mudiri']
         bilet_soni = int(request.form['bilet_soni'])
@@ -468,10 +471,10 @@ def generate_docx():
             p_v1 = document.add_paragraph()
             p_v2 = document.add_paragraph()
             p_v3 = document.add_paragraph()
-            
+            #shapka
             v1 = p_v1.add_run('Namangan muhandislik - qurilish instituti\n')
             v2 = p_v1.add_run(f'«{kafedra_nomi}» kafedrasi \n Oraliq nazorat uchun savollar\n')
-            v2 = p_v1.add_run(f'«{fan}» fanidan ({semestr}-semestr uchun)\n')
+            v2 = p_v1.add_run(f'«{fan}» fanidan {guruh} - guruhi ({semestr}-semestr uchun)\n')
             v3 = p_v1.add_run(f'Oraliq nazorat savollari\n')
             v4 = p_v1.add_run(f'{i+1} - variant')
         
@@ -523,6 +526,7 @@ def generate_and_download():
         variantda_test_soni = int(request.form['variantda_test_soni'])
         fayl = request.files['savol_file']
         
+        
         try:
             zip_data = generate_docx_files(
                 kafedra_nomi=kafedra_nomi,
@@ -544,4 +548,4 @@ def generate_and_download():
 
  
 if __name__ == '__main__':
-    app.run(debug=True, port=8080)
+    app.run(debug=True, port=8080, host="0.0.0.0")
