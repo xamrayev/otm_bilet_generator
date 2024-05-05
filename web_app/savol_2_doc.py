@@ -22,7 +22,7 @@ def savollar_from_xls(filename=str):
         first_column_data = first_column_data[1:]
     return first_column_data
 
-def biletlar_ru(bilet_soni=int, savollar=list, fan=str,semestr=str, kafedra=str, tuzuvchi=str, zav_kaf=str, savollar_soni=int):
+def biletlar_ru( guruh=str,bilet_soni=int, savollar=list, fan=str,semestr=str, kafedra=str, tuzuvchi=str, zav_kaf=str, savollar_soni=int):
     '''
     bilet_soni => int, savollar => list, fan=>str, semestr=>int, kafedra=>str, tuzuvchi=>str, zav_kaf=>str,
     tayyor savollarni random metodida bilet_soni marta biletlarga ajratib beradi.
@@ -38,7 +38,7 @@ def biletlar_ru(bilet_soni=int, savollar=list, fan=str,semestr=str, kafedra=str,
         
         v1 = p_v1.add_run('Namangan muhandislik - qurilish instituti\n')
         v2 = p_v1.add_run(f'«{kafedra}» kafedrasi \n Oraliq nazorat uchun savollar\n')
-        v2 = p_v1.add_run(f'«{fan}» fanidan ({semestr}-semestr uchun)\n')
+        v2 = p_v1.add_run(f'«{fan}» fanidan {guruh} talabasi ({semestr}-semestr uchun)\n')
         v3 = p_v1.add_run(f'Oraliq nazorat savollari\n')
         v4 = p_v1.add_run(f'{i+1} - variant')
        
@@ -67,4 +67,3 @@ def biletlar_ru(bilet_soni=int, savollar=list, fan=str,semestr=str, kafedra=str,
         # p_v3.add_run("\n")
     filename = fan+"_biletlar.docx"
     document.save(filename)
-    print("100.0 %")
