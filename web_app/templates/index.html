@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Savol Generator Online</title>
+    <title>Generator Online</title>
     <link rel="stylesheet" href={{ url_for('static', filename='css/bulma.min.css' ) }}>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5232D7YHF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-L5232D7YHF');
+    </script>
 </head>
 <body>
     <div class="section">
@@ -11,12 +20,12 @@
             <a class="navbar-item" href="/">
                 <span class="icon">
                   <i class="fas fa-file-word"></i> </span>
-                <span>Savol Generator Online</span>
+                <span>Anvarxon Majidov</span>
             </a>
         </div>
 
         <div class="navbar-end">
-            
+
             <a href="/ru" class="navbar-item" style="margin-right: 20px;">
                 RU
             </a>
@@ -35,7 +44,7 @@
 
     <section class="section" style="margin-top: -10vh;">
         <div class="container">
-            
+
             <form action="/generate_docx" class="box" method="POST" enctype="multipart/form-data">
                 <div class="columns is-multiline">
                     <div class="column is-half">
@@ -49,6 +58,12 @@
                             <label for="fanimiz" class="label">Fan nomi</label>
                             <div class="control">
                                 <input type="text" class="input" id="fanimiz" name="fanimiz" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="guruh" class="label">Guruh nomi</label>
+                            <div class="control">
+                                <input type="text" class="input" id="guruh" name="guruh" required>
                             </div>
                         </div>
                         <div class="field">
@@ -116,7 +131,7 @@
 
     <section class="section" style="margin-top: -10vh;">
         <div class="container">
-            
+
             <form action="/generate_and_download" class="box" method="POST" enctype="multipart/form-data">
                 <div class="columns is-multiline">
                     <div class="column is-half">
@@ -172,7 +187,7 @@
                             </div>
                         </div>
                         <div class="field">
-                            <label for="savol_file" class="label">Savollar fayli:</label>
+                            <label for="savol_file" class="label">Testlar fayli:</label>
                             <div class="control">
                                 <input type="file" class="input" id="savol_file" name="savol_file">
                             </div>
